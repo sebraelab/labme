@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  calendarAPIKey: 'AIzaSyCImVY_Hfy-t9TQ6oc_IORLRj5Y_42J4PE'
 };
 
 /*

@@ -1,4 +1,21 @@
 @import '~bootstrap/scss/bootstrap-grid.scss';
+@import '~@angular/material/theming';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@include mat-core();
+
+@import 'theme.scss';
+
+@include angular-material-theme($sebraelab-desafio-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.spacer {
+  flex-grow: 1;
+}
