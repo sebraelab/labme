@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { MatCardModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { LoadMoreModule } from '@app/utils/components/load-more/load-more.module';
 import { HomeComponent } from './containers/home/home.component';
@@ -21,6 +21,7 @@ const routes: Routes = [{ path: '', component: HomeComponent }];
     RouterModule.forChild(routes),
     MatCardModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     LoadMoreModule
   ]
 })

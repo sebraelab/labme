@@ -12,6 +12,9 @@
   </div>
 
   <div class="content">
+    <div class="spinner" *ngIf="loading$ | async">
+      <mat-spinner color="primary" diameter="42"></mat-spinner>
+    </div>
     <calendar-event-group
       *ngFor="let eventsGrouped of eventsGroupeds$ | async"
       [eventsGroup]="eventsGrouped"
