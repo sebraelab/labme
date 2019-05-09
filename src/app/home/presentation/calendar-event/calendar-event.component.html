@@ -23,7 +23,7 @@
       <mat-icon>schedule</mat-icon>
       <p>
         {{
-          parseToDate(event.end.dateTime) - parseToDate(event.start.dateTime)
+          calculateDuration(event.end.dateTime, event.start.dateTime)
             | date: 'HH:mm'
         }}
       </p>

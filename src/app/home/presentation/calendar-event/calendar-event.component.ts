@@ -11,7 +11,7 @@ import { CalendarEvent } from '@app/calendars/calendar.types';
 export class CalendarEventComponent {
   @Input() event: CalendarEvent;
 
-  parseToDate(dateAsStr) {
-    return moment(dateAsStr);
+  calculateDuration(start: string, end: string) {
+    return moment(start).diff(end);
   }
 }
