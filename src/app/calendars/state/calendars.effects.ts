@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { of, combineLatest } from 'rxjs';
+import { map, switchMap, catchError, first } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
@@ -10,9 +10,15 @@ import {
   CalendarsActionsTypes,
   LoadCalendarsByStartDateAction,
   LoadCalendarsByStartDateSuccessAction,
-  LoadCalendarsByStartDateFailAction
+  LoadCalendarsByStartDateFailAction,
+  LoadMoreCalendarsAction,
+  LoadMoreCalendarsSuccessAction,
+  LoadMoreCalendarsFailAction
 } from './calendars.actions';
-import { selectCalendarsIds } from './calendars.state';
+import {
+  selectCalendarsIds,
+  selectCalendarsCurrentStartDate
+} from './calendars.state';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +29,9 @@ export class CalendarsEffects {
     ofType<LoadCalendarsByStartDateAction>(
       CalendarsActionsTypes.LOAD_CALENDARS_BY_START_DATE
     ),
-    switchMap(action => {
-      return this.store.select(selectCalendarsIds).pipe(
+    switchMap(action =>
+      this.store.select(selectCalendarsIds).pipe(
+        first(),
         switchMap(calendarsIds =>
           this.calendarsService
             .getByCalendarIdsStartDate(
@@ -41,8 +48,30 @@ export class CalendarsEffects {
               )
             )
         )
-      );
-    })
+      )
+    )
+  );
+
+  @Effect()
+  loadMoreCalendars$ = this.actions$.pipe(
+    ofType<LoadMoreCalendarsAction>(CalendarsActionsTypes.LOAD_MORE_CALENDARS),
+    switchMap(action =>
+      combineLatest(
+        this.store.select(selectCalendarsIds).pipe(first()),
+        this.store.select(selectCalendarsCurrentStartDate).pipe(first())
+      ).pipe(
+        switchMap(([calendarsIds, startDate]) =>
+          this.calendarsService
+            .getByCalendarIdsStartDate(calendarsIds as string[], startDate)
+            .pipe(
+              map(calendars => new LoadMoreCalendarsSuccessAction(calendars)),
+              catchError(message =>
+                of(new LoadMoreCalendarsFailAction(message))
+              )
+            )
+        )
+      )
+    )
   );
 
   constructor(

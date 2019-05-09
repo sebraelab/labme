@@ -1,0 +1,15 @@
+mat-toolbar {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.content {
+  position: relative;
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 64px;
+  @media (max-width: 599px) {
+    margin-top: 56px;
+  }
+}

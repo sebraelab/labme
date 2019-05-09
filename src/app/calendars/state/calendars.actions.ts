@@ -13,26 +13,6 @@ export enum CalendarsActionsTypes {
   LOAD_MORE_CALENDARS_FAIL = '[calendars] load more calendars fail'
 }
 
-export class LoadCalendarsAction implements Action {
-  readonly type = CalendarsActionsTypes.LOAD_CALENDARS;
-
-  constructor(
-    public query: { data_inicial: any; data_final: any; espaco: string }
-  ) {}
-}
-
-export class LoadCalendarsSuccessAction implements Action {
-  readonly type = CalendarsActionsTypes.LOAD_CALENDARS_SUCCESS;
-
-  constructor(public calendars: Calendar[]) {}
-}
-
-export class LoadCalendarsFailAction implements Action {
-  readonly type = CalendarsActionsTypes.LOAD_CALENDARS_FAIL;
-
-  constructor(public message: string) {}
-}
-
 export class LoadCalendarsByStartDateAction implements Action {
   readonly type = CalendarsActionsTypes.LOAD_CALENDARS_BY_START_DATE;
 
@@ -53,11 +33,15 @@ export class LoadCalendarsByStartDateFailAction implements Action {
 
 export class LoadMoreCalendarsAction implements Action {
   readonly type = CalendarsActionsTypes.LOAD_MORE_CALENDARS;
-
-  constructor(public startDate: string) {}
 }
 
-export class LoadMoreCalendarsMoreSuccessAction implements Action {
+// export class LoadMoreCalendarsPostAction implements Action {
+//   readonly type = CalendarsActionsTypes.LOAD_MORE_CALENDARS;
+
+//   constructor(public startDate: string) {}
+// }
+
+export class LoadMoreCalendarsSuccessAction implements Action {
   readonly type = CalendarsActionsTypes.LOAD_MORE_CALENDARS_SUCCESS;
 
   constructor(public calendars: Calendar[]) {}
@@ -70,12 +54,9 @@ export class LoadMoreCalendarsFailAction implements Action {
 }
 
 export type CalendarsActions =
-  | LoadCalendarsAction
-  | LoadCalendarsSuccessAction
-  | LoadCalendarsFailAction
   | LoadCalendarsByStartDateAction
   | LoadCalendarsByStartDateSuccessAction
   | LoadCalendarsByStartDateFailAction
   | LoadMoreCalendarsAction
-  | LoadMoreCalendarsMoreSuccessAction
+  | LoadMoreCalendarsSuccessAction
   | LoadMoreCalendarsFailAction;

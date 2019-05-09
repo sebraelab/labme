@@ -10,15 +10,15 @@ export interface CalendarEvent {
   id: string;
   status: CalendarEventStatus;
   htmlLink: string;
-  created: Date;
-  updated: Date;
+  created: string;
+  updated: string;
   summary: string;
   description: string;
   location: string;
   creator: { email: string };
   organizer: { email: string; displayName: string; self: boolean };
-  start: { dateTime: Date };
-  end: { dateTime: Date };
+  start: { dateTime: string };
+  end: { dateTime: string };
   iCalUID: string;
   sequence: number;
   extendedProperties: any;
@@ -30,7 +30,7 @@ export interface Calendar {
   etag: string;
   summary: string;
   description: string;
-  updated: Date;
+  updated: string;
   timeZone: string;
   accessRole: AccessRole;
   defaultReminders: any[];
