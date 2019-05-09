@@ -1,7 +1,7 @@
 {
-  "name": "sebraelab-desafio",
-  "short_name": "sebraelab-desafio",
-  "theme_color": "#ed712f",
+  "name": "SEBRAELAB",
+  "short_name": "SEBRAELAB",
+  "theme_color": "#f1843d",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

@@ -70,7 +70,7 @@ $sebraelab-desafio-accent-palette: (
   )
 );
 
-$primary: mat-palette($sebraelab-desafio-primary-palette, 700, 300, 900);
+$primary: mat-palette($sebraelab-desafio-primary-palette, 500, 300, 900);
 $accent: mat-palette($sebraelab-desafio-accent-palette);
 $warn: mat-palette($mat-red, A200);
 

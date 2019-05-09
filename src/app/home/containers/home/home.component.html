@@ -1,0 +1,20 @@
+<load-more
+  [loadingMore]="loading$ | async"
+  [loadMoreWhenMissing]="200"
+  (load)="onLoad()"
+>
+  <div class="breadcrumb">
+    <span class="title">Eventos</span>
+    <span class="spacer"></span>
+    <div class="detail">
+      {{ startDate | date: "EEE, dd 'de' MMMM 'de' yyyy" }}
+    </div>
+  </div>
+
+  <div class="content">
+    <calendar-event-group
+      *ngFor="let eventsGrouped of eventsGroupeds$ | async"
+      [eventsGroup]="eventsGrouped"
+    ></calendar-event-group>
+  </div>
+</load-more>

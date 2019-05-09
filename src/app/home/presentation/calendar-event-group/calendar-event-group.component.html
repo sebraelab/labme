@@ -1,1 +1,10 @@
-{{ eventsGroup[0] }} - {{ eventsGroup[0] | date: 'EEE, dd, MM, yyyy' }}
+<div class="title">
+  {{ eventsGroup[0] | date: "EEE, dd 'de' MMMM 'de' yyyy" }}
+  <hr />
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6" *ngFor="let event of eventsGroup[1]">
+    <calendar-event [event]="event"></calendar-event>
+  </div>
+</div>

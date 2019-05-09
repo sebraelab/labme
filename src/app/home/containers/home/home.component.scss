@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import 'src/theme.scss';
+
+.breadcrumb {
+  height: 80px;
+  padding: 0 20px;
+  background-color: mat-color($sebraelab-desafio-primary-palette, 500);
+  color: mat-contrast($sebraelab-desafio-primary-palette, 500);
+  display: flex;
+  align-items: center;
+
+  .title {
+    font-size: 30px;
+  }
+  .detail {
+    font-size: 16px;
+  }
+}
+.content {
+  padding: 20px;
+}
