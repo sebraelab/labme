@@ -5,12 +5,13 @@
 
 @import 'theme.scss';
 
-@include angular-material-theme($sebraelab-desafio-theme);
+@include angular-material-theme($labme-theme);
 
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;

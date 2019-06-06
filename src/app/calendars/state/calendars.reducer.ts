@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { CalendarsActions, CalendarsActionsTypes } from './calendars.actions';
 import {
   initialState,
@@ -5,7 +6,6 @@ import {
   calendarsAdapter
 } from './calendars.state';
 import { generateNextStartDate } from '@app/utils/functions';
-import { Dictionary } from '@ngrx/entity';
 import { Calendar } from '../calendar.types';
 
 export function calendarsReducer(
@@ -17,7 +17,7 @@ export function calendarsReducer(
       return {
         ...state,
         loading: true,
-        currentStartDate: action.startDate
+        currentStartDate: moment(action.startDate).toISOString()
       };
 
     case CalendarsActionsTypes.LOAD_CALENDARS_BY_START_DATE_SUCCESS:
@@ -36,7 +36,7 @@ export function calendarsReducer(
       return {
         ...state,
         currentStartDate: generateNextStartDate(state.currentStartDate),
-        loading: true
+        loadingMore: true
       };
 
     case CalendarsActionsTypes.LOAD_MORE_CALENDARS_SUCCESS:
@@ -54,14 +54,25 @@ export function calendarsReducer(
             }
           };
         }, state.entities),
-        loading: false
+        loadingMore: false
       };
 
     case CalendarsActionsTypes.LOAD_MORE_CALENDARS_FAIL:
       return {
         ...state,
-        loading: false
+        loadingMore: false
       };
+
+    case CalendarsActionsTypes.REFRESH_CALENDARS:
+      return calendarsAdapter.addAll(
+        action.filtro.espacos.map(
+          calendarId => ({ calendarId, items: [] } as Calendar)
+        ),
+        {
+          ...state,
+          currentStartDate: action.filtro.data_inicial
+        }
+      );
 
     default:
       return state;

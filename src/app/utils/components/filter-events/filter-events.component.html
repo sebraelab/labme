@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Filtros</h2>
+<form [formGroup]="formFilter" (submit)="onFilter()">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="data_inicial"
+        placeholder="Data inicial">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker [touchUi]="true"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-list>
+      <mat-list-item formArrayName="espacos" *ngFor="let espaco of espacosField.controls; let i = index">
+        <mat-checkbox color="primary" [formControlName]="i"></mat-checkbox>
+        <span>
+          {{ espacos[i].descricao }}
+        </span>
+      </mat-list-item>
+    </mat-list>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button color="primary">Filtrar</button>
+  </mat-dialog-actions>
+</form>
