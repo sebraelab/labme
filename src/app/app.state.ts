@@ -1,7 +1,7 @@
-// import { AppState as CoreState } from './core/core.state';
-import { EventosState } from './eventos/state/eventos.state';
+import { CalendarsState } from './calendars/state/calendars.state';
+import { EspacosState } from './espacos/state/espacos.state';
 
-// export interface AppState extends CoreState {
 export interface AppState {
-  eventos: EventosState;
+  calendars: CalendarsState;
+  espacos: EspacosState;
 }

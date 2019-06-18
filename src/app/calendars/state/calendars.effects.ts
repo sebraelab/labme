@@ -13,7 +13,8 @@ import {
   LoadCalendarsByStartDateFailAction,
   LoadMoreCalendarsAction,
   LoadMoreCalendarsSuccessAction,
-  LoadMoreCalendarsFailAction
+  LoadMoreCalendarsFailAction,
+  RefreshCalendarsAction
 } from './calendars.actions';
 import {
   selectCalendarsIds,
@@ -24,6 +25,14 @@ import {
   providedIn: 'root'
 })
 export class CalendarsEffects {
+  @Effect()
+  refreshCalendars$ = this.actions$.pipe(
+    ofType<RefreshCalendarsAction>(CalendarsActionsTypes.REFRESH_CALENDARS),
+    switchMap(action =>
+      of(new LoadCalendarsByStartDateAction(action.filtro.data_inicial))
+    )
+  );
+
   @Effect()
   loadCalendars$ = this.actions$.pipe(
     ofType<LoadCalendarsByStartDateAction>(

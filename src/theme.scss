@@ -2,8 +2,7 @@
 
 // defined a real custom palette (using http://mcg.mbitson.com) with base color: #f1843d
 // http://mcg.mbitson.com/#!?mcgpalette0=%23f1843d
-$sebraelab-desafio-primary-palette: (
-  50: #fdf0e8,
+$labme-primary-palette: (50: #fdf0e8,
   100: #fbdac5,
   200: #f8c29e,
   300: #f5a977,
@@ -17,8 +16,7 @@ $sebraelab-desafio-primary-palette: (
   A200: #ffede6,
   A400: #ffc7b3,
   A700: #ffb39a,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
@@ -31,14 +29,11 @@ $sebraelab-desafio-primary-palette: (
     A100: #000000,
     A200: #000000,
     A400: #000000,
-    A700: #000000
-  )
-);
+    A700: #000000));
 
 // defined a real custom palette (using http://mcg.mbitson.com) with base color: #007bff
 // http://mcg.mbitson.com/#!?mcgpalette0=%23007bff
-$sebraelab-desafio-accent-palette: (
-  50: #e0efff,
+$labme-accent-palette: (50: #e0efff,
   100: #b3d7ff,
   200: #80bdff,
   300: #4da3ff,
@@ -52,8 +47,7 @@ $sebraelab-desafio-accent-palette: (
   A200: #f2f5ff,
   A400: #bfceff,
   A700: #a6baff,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
@@ -66,12 +60,10 @@ $sebraelab-desafio-accent-palette: (
     A100: #000000,
     A200: #000000,
     A400: #000000,
-    A700: #000000
-  )
-);
+    A700: #000000));
 
-$primary: mat-palette($sebraelab-desafio-primary-palette, 500, 300, 900);
-$accent: mat-palette($sebraelab-desafio-accent-palette);
+$primary: mat-palette($labme-primary-palette, 500, 300, 900);
+$accent: mat-palette($labme-accent-palette);
 $warn: mat-palette($mat-red, A200);
 
-$sebraelab-desafio-theme: mat-light-theme($primary, $accent, $warn);
+$labme-theme: mat-light-theme($primary, $accent, $warn);
