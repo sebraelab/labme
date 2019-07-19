@@ -1,8 +1,0 @@
-<div class="scroller" #scroller>
-  <ng-content></ng-content>
-</div>
-<div class="footer">
-  <button type="button" mat-raised-button color="primary" *ngIf="loading" (click)="load.next(true)">Carregar
-    Mais</button>
-  <mat-spinner *ngIf="loading" color="primary" diameter="30"></mat-spinner>
-</div>

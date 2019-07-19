@@ -1,6 +1,0 @@
-<load-more [loadingMore]="loading$ | async" [loadMoreWhenMissing]="200" (load)="onLoadMore()">
-  <div class="content">
-    <calendar-event-group *ngFor="let eventsGrouped of eventsGroupeds$ | async" [eventsGroup]="eventsGrouped">
-    </calendar-event-group>
-  </div>
-</load-more>
