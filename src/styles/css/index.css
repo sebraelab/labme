@@ -47,4 +47,18 @@ code {
   padding: 20px;
 }
 
+.calendar {
+  margin-top: 1.5em;
+}
+
+.fc-dayGridMonth-button, .fc-button, .fc-button-primary {
+  background-color: #ff731b !important;
+  border-color: #ff731b !important;
+}
+
+.fc-right .fc-prev-button, .fc-right .fc-next-button {
+  background-color: #ff731b !important;
+  border-color: #ff731b !important;
+}
+
 /*# sourceMappingURL=index.css.map */
